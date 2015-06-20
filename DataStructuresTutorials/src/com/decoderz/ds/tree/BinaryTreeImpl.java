@@ -9,18 +9,18 @@ public class BinaryTreeImpl {
 
 		BinaryTreeImpl binryTreeImp = new BinaryTreeImpl();
 
-		int[] inOrder = new int[] { 4, 2, 5, 1, 6, 3, 7 };
+		char[] inOrder = new char[] { 'D', 'B', 'E', 'A', 'F', 'C', 'G' };
 
-		int[] postOrder = new int[] { 4, 5, 2, 6, 7, 3, 1 };
+		char[] postOrder = new char[] { 'D', 'E', 'B', 'F', 'G', 'C', 'A' };
 
-		List<Integer> inOrderList = new ArrayList<>();
+		List<Character> inOrderList = new ArrayList<>();
 
-		for (int i : inOrder)
+		for (char i : inOrder)
 			inOrderList.add(i);
 
-		List<Integer> postOrderList = new ArrayList<>();
+		List<Character> postOrderList = new ArrayList<>();
 
-		for (int i : postOrder)
+		for (char i : postOrder)
 			postOrderList.add(i);
 
 		Node root = binryTreeImp.constructTree(inOrderList, postOrderList, 0,
@@ -30,14 +30,14 @@ public class BinaryTreeImpl {
 
 	}
 
-	private Node constructTree(List<Integer> inOrderList,
-			List<Integer> postOrderList, int inStart, int inEnd, int postStart,
+	private Node constructTree(List<Character> inOrderList,
+			List<Character> postOrderList, int inStart, int inEnd, int postStart,
 			int postEnd) throws Exception {
 
 		if (inStart > inEnd || postStart > postEnd)
 			return null;
 
-		int data = postOrderList.get(postEnd);
+		char data = postOrderList.get(postEnd);
 		int index = inOrderList.indexOf(data);
 
 		Node root = new Node(data);
