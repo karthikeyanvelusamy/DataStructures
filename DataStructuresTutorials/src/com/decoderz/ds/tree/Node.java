@@ -1,8 +1,5 @@
 package com.decoderz.ds.tree;
 
-
-
-
 public class Node {
 
 	private int data;
