@@ -6,7 +6,6 @@ import java.util.List;
 
 public class BinaryTreeImpl {
 
-	
 	public static void main(String[] args) throws Exception {
 		// Binary Tree Construction with given inOrder and postOrder
 		BinaryTreeImpl binryTreeImp = new BinaryTreeImpl();
@@ -29,18 +28,20 @@ public class BinaryTreeImpl {
 		Node root = binryTreeImp.constructTree(inOrderList, postOrderList, 0,
 				inOrder.length - 1, 0, postOrder.length - 1);
 
-		
 		System.out.println("Pre Order With Recurssion : ");
 		binryTreeImp.preOrderWithRecursion(root);
 
 		System.out.println();
 		System.out.println("Pre Order With Out Recurssion : ");
 		binryTreeImp.preOrderWithOutRecurssion(root);
-		
+
 		System.out.println("In Order With Recurssion : ");
 		binryTreeImp.inOrderWithRecursion(root);
-
 		
+		System.out.println();
+		System.out.println("In Order With Out  Recurssion : ");
+		binryTreeImp.inOrderWithOutRecursion(root);
+
 	}
 
 	private Node constructTree(List<Character> inOrderList,
@@ -101,23 +102,39 @@ public class BinaryTreeImpl {
 		System.out.println();
 	}
 
-	
-
 	/**
 	 * Method for InOrder Traversal for a binary tree with recursive calls.
 	 * 
 	 * @param root
 	 */
 	private void inOrderWithRecursion(Node root) {
-
 		if (root != null) {
 			inOrderWithRecursion(root.getLeft());
 			System.out.print(root.getData() + " ");
 			inOrderWithRecursion(root.getRight());
 
 		}
-
 	}
 
+	/**
+	 * Method for InOrder Traversal for a binary tree with out recursive calls.
+	 * 
+	 * @param root
+	 */
+	private void inOrderWithOutRecursion(Node root) {
+		LinkedList<Node> stack = new LinkedList<Node>();
 
+		Node temp = root;
+		while (temp != null || !stack.isEmpty()) {
+			if (temp != null) {
+				stack.push(temp);
+				temp = temp.getLeft();
+			} else {
+				temp = stack.pop();
+				System.out.print(temp.getData() + " ");
+				temp = temp.getRight();
+			}
+		}
+		System.out.println();
+	}
 }
