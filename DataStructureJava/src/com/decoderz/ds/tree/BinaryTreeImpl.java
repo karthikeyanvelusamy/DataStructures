@@ -24,7 +24,7 @@ public class BinaryTreeImpl {
 		for (char i : postOrder)
 			postOrderList.add(i);
 
-		// Connstructing Binary Tree by recursive calls
+		// Connstructing Binary Tree by  calls
 		Node root = binryTreeImp.constructTree(inOrderList, postOrderList, 0,
 				inOrder.length - 1, 0, postOrder.length - 1);
 
