@@ -1,5 +1,6 @@
 package com.decoderz.ds.linkedlist;
 
+import java.awt.MultipleGradientPaint.CycleMethod;
 import java.util.Scanner;
 
 public class ReverseLinkedList {
@@ -16,6 +17,15 @@ public class ReverseLinkedList {
 		instance.displayAllValues(head);
 		System.out.println("Reversing again ( Recursion ) : ");
 		head = instance.reverseUsingRecursion(head, null);
+		instance.displayAllValues(head);
+
+		System.out.println("Enter the group size : ");
+		int k = scanner.nextInt();
+		System.out.println("Reverse list for given K group : ");
+
+		head = instance.reverseLinkedListForGroup(head, k);
+		System.out
+				.println("After reversing the group of k nodes in linked list : ");
 		instance.displayAllValues(head);
 	}
 
@@ -79,13 +89,36 @@ public class ReverseLinkedList {
 		return prev;
 	}
 
-	private Node reverseUsingRecursion(Node head,Node prev) {
+	private Node reverseUsingRecursion(Node head, Node prev) {
 		if (head == null) {
 			return prev;
 		}
-		Node newHead = reverseUsingRecursion(head.getNext(),head);
+		Node newHead = reverseUsingRecursion(head.getNext(), head);
 		head.setNext(prev);
 		return newHead;
+	}
+
+	/*
+	 * Reversing the Group of nodes in linked list
+	 */
+	private Node reverseLinkedListForGroup(Node head, int k) {
+		if (head == null) {
+			return null;
+		}
+		Node current = head;
+		Node next = null;
+		Node prev = null;
+		int count = 0;
+		Node startingNode = current;
+		while (count < k && current != null) {
+			next = current.getNext();
+			current.setNext(prev);
+			prev = current;
+			current = next;
+			count++;
+		}
+		startingNode.setNext(reverseLinkedListForGroup(next, k));
+		return prev;
 	}
 
 }
