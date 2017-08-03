@@ -2,21 +2,21 @@ package com.decoderz.ds.tree;
 
 public class Node {
 
-	private char data;
+	private int data;
 	private Node left;
 	private Node right;
 
-	Node(char data) {
+	Node(int data) {
 		this.data = data;
 	}
 
-	Node(char data, Node left, Node right) {
+	Node(int data, Node left, Node right) {
 		this.data = data;
 		this.left = left;
 		this.right = right;
 	}
 
-	public char getData() {
+	public int getData() {
 		return data;
 	}
 
